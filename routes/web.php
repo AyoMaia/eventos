@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WelcomeController;
 
 //Route::get('/contact', function () {
 //    return view('contact');
@@ -33,18 +34,12 @@ Route::get('/select', function () {
     return view('select');
 });
 
-
-
-Route::get('/welcome', function () {
-
-    $nome = "Diogo";
-    $idade = 24;
-
-
-    return view('welcome', ['nome' => $nome, 'idade' => $idade]);
-
-
+Route::get('/product/{id}', function ($id) {
+    return view('product', ['id' => $id]);
 });
 
-Route::get('/contact', [TestController::class, 'index'])->name('contact');
+
+Route::get('/welcome', [WelcomeController::class, 'welcome']);
+
+Route::get('/contact', [TestController::class, 'contact'])->name('contact');
 
